@@ -25,10 +25,7 @@ RUN apt install -y libavutil-dev libavcodec-dev libavfilter-dev
 
 USER alvr
 
-RUN curl https://sh.rustup.rs -sSf | \
-    sh -s -- --default-toolchain stable -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
 
 ENV PATH=/home/alvr/.cargo/bin:$PATH
 ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-
-RUN cd
