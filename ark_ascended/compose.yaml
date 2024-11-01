@@ -1,0 +1,60 @@
+services:
+  asa_server_astraeos:
+    build: .
+    image: "schnaggelz:asaserver"
+    container_name: asa_server_as
+    stdin_open: true
+    tty: true
+    env_file: ".env.astraeos"
+    ports:
+      - "7777:7777/tcp"
+      - "7777:7777/udp"
+      - "27020:27020/tcp"
+    volumes:
+      - steamapps:/opt/steamapps
+      - tmp:/home/ubuntu/temp
+    mem_limit: 16G
+  asa_server_aberration:
+    build: .
+    image: "schnaggelz:asaserver"
+    container_name: asa_server_ab
+    stdin_open: true
+    tty: true
+    env_file: ".env.aberration"
+    ports:
+      - "7777:7777/tcp"
+      - "7777:7777/udp"
+      - "27020:27020/tcp"
+    volumes:
+      - steamapps:/opt/steamapps
+      - tmp:/home/ubuntu/temp
+    mem_limit: 16G
+  asa_server_clubark:
+    build: .
+    image: "schnaggelz:asaserver"
+    container_name: asa_server_bm
+    stdin_open: true
+    tty: true
+    env_file: ".env.clubark"
+    ports:
+      - "7778:7778/tcp"
+      - "7778:7778/udp"
+      - "27028:27028/tcp"
+    volumes:
+      - steamapps:/opt/steamapps
+      - tmp:/home/ubuntu/temp
+    mem_limit: 16G
+
+volumes:
+  steamapps:
+    driver: local
+    driver_opts:
+      device: /mnt/ssd1/steam/steamapps/common
+      o: bind
+      type: local
+  tmp:
+    driver: local
+    driver_opts:
+      device: /tmp
+      o: bind
+      type: local
