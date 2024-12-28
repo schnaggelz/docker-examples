@@ -1,0 +1,11 @@
+services:
+  rocm:
+    build: .
+    image: "schnaggelz:rocm"
+    container_name: rocm_server
+    stdin_open: true
+    tty: true
+    env_file: ".env.rocm"
+    ports:
+      - "3000:3000"
+    
