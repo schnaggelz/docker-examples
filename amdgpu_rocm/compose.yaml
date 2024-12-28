@@ -1,6 +1,11 @@
 services:
   rocm:
-    build: .
+    build:
+      context: .
+      args:
+        APT_PREF: "Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600"
+        ROCM_VERSION: "6.3"
+        AMDGPU_VERSION: "6.3"
     image: "schnaggelz:rocm"
     container_name: rocm_server
     stdin_open: true
