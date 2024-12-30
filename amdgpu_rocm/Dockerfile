@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN groupadd -g 109 render
 
 RUN mkdir opt/llama.cpp && cd /opt/llama.cpp && git clone https://github.com/ggerganov/llama.cpp src && cd src \
-  && HIPCXX="$(hipconfig -l)/clang" HIP_PATH="$(hipconfig -R)" cmake -S . -B build -DGGML_HIP=ON -DLLAMA_CURL=ON -DAMDGPU_TARGETS=$ROCM_ARCH -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/llama.cpp \
+  && HIPCXX="$(hipconfig -l)/clang" HIP_PATH="$(hipconfig -R)" cmake -S . -B build -DGGML_HIP=ON -DLLAMA_CURL=ON -DAMDGPU_TARGETS=$AMDGPU_ARCH -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/llama.cpp \
   && cmake --build build --config Release -- -j 32 && cmake --build build --config Release -- install
 
 # RUN apt-get update && apt-get install -y --no-install-recommends \
