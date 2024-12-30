@@ -4,9 +4,9 @@ services:
       context: .
       args:
         APT_PREF: "Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600"
+        AMDGPU_ARCH: "gfx1100"
         AMDGPU_VERSION: "6.3"
         ROCM_VERSION: "6.3"
-        ROCM_ARCH: "gfx1100"
     image: "schnaggelz:rocm"
     devices:
       - /dev/kfd
@@ -18,5 +18,5 @@ services:
     tty: true
     env_file: ".env.rocm"
     ports:
-      - "8080:8080"
+      - "8888:8080"
     
